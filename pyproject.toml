@@ -1,0 +1,13 @@
+[tool.isort]
+multi_line_output = 6
+order_by_type = false
+case_sensitive = true
+combine_as_imports = true
+line_length = 140
+atomic = true
+
+[tool.ruff]
+target-version = "py311"
+extend-exclude = [".cache"]
+line-length = 140
+select = ["E", "F"]
