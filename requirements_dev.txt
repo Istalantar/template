@@ -1,3 +1,2 @@
-isort==5.12.0
-pre-commit==3.3.2
-ruff==0.0.272
+pre-commit
+ruff
