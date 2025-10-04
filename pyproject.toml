@@ -1,3 +1,18 @@
+[project]
+name = "template"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Istalantar",email = "istalantar@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+package-mode = false
+
 [tool.poetry.dependencies]
 python = "^3.12"
 
@@ -7,7 +22,7 @@ pyright = "*"
 ruff = "*"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
@@ -19,8 +34,6 @@ line-length = 120
 pydocstyle.convention = "pep257"
 select = ["ALL"]
 ignore = [
-    # Self and cls do not require annotations.
-    "ANN101", "ANN102",
     # Documenting everything is a bit too much.
     "D100", "D107",
     # We do not need cryptographically secure random functions.
