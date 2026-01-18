@@ -32,6 +32,7 @@ line-length = 120
 target-version = "py313"
 
 [tool.ruff.lint]
+pydocstyle.convention = "pep257"
 # Selected Rule Categories:
 # E/W  : pycodestyle (Standard PEP8 errors/warnings)
 # F    : Pyflakes (Logic bugs like unused variables)
