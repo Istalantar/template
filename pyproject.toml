@@ -6,7 +6,7 @@ authors = [
     {name = "Istalantar",email = "istalantar@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
 ]
 
@@ -14,7 +14,7 @@ dependencies = [
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "*"
@@ -26,23 +26,43 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-target-version = "py312"
-extend-exclude = [".cache"]
+# The standard line length.
+# Even if you go over, the formatter handles the wrapping.
 line-length = 120
+target-version = "py313"
 
 [tool.ruff.lint]
-pydocstyle.convention = "pep257"
-select = ["ALL"]
+# Selected Rule Categories:
+# E/W  : pycodestyle (Standard PEP8 errors/warnings)
+# F    : Pyflakes (Logic bugs like unused variables)
+# I    : isort (Automatic import sorting)
+# B    : bugbear (Finds likely bugs/design flaws)
+# UP   : pyupgrade (Auto-upgrades syntax to Python 3.13 standards)
+# N    : pep8-naming (Enforces standard naming conventions)
+# SIM  : flake8-simplify (Suggests more readable code patterns)
+# PL   : Pylint (Deep analysis of code quality)
+select = ["E", "W", "F", "I", "B", "UP", "N", "SIM", "PL"]
+
 ignore = [
-    # Documenting everything is a bit too much.
-    "D100", "D107",
-    # We do not need cryptographically secure random functions.
-    "S311",
+    "E501", # Ignore line-length (the formatter takes care of this)
+    "T201", # Allows print() statements (remove if building a library)
+    "PLR0913", # Allows more than 5 arguments in a function (personal preference)
 ]
+
+[tool.ruff.lint.isort]
+# Groups your project imports separately from 3rd party libraries
+known-first-party = ["NewProjectTest"]
+combine-as-imports = true
+
+[tool.ruff.format]
+# Matches the "Black" formatting style which is the industry standard
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
 
 [tool.pyright]
 typeCheckingMode = "basic"
-pythonVersion = "3.12"
+pythonVersion = "3.13"
 reportUnnecessaryTypeIgnoreComment = "error"
 # Pyodide "js" module is dynamic.
 reportMissingModuleSource = "none"
